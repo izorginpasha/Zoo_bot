@@ -1,5 +1,6 @@
 import asyncio
-
+from dotenv import load_dotenv
+import os
 import logging
 import sys
 from unittest.mock import call
@@ -14,10 +15,14 @@ from aiogram.utils.formatting import (
     Bold, as_list, as_marked_section
 )
 
-from token_data import TOKEN
 
+
+# Загружаем переменные из .env
+load_dotenv()
+TOKEN = os.getenv('TOKEN')
 dp = Dispatcher()
 dp.include_router(router)
+
 
 
 @dp.message(CommandStart())
