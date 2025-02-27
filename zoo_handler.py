@@ -9,7 +9,7 @@ from aiogram.utils.keyboard import ReplyKeyboardBuilder
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram import Router, types
-from Constant import question, rez, opisanie
+from Constant import question, rez, opisanie,t
 
 router = Router()
 translator = Translator()
@@ -17,7 +17,6 @@ translator = Translator()
 
 class OrderWeather(StatesGroup):
     waiting_for_forecast = State()
-    waiting = State()
 
 
 async def opros(message):
@@ -26,7 +25,7 @@ async def opros(message):
     )
 
 
-t = ['Да', 'Нет', '/Victirine', '/start', '/Отправить_результат']
+
 
 
 @router.message(Command("Отправить_результат"))
@@ -40,7 +39,7 @@ async def weather_time(message: Message, command: CommandObject, state: FSMConte
 
 @router.message(Command("Victirine"))
 async def weather_time(message: Message, command: CommandObject, state: FSMContext):
-    # await state.set_data({'count': command.args, 'data_recip': data})
+
 
     builder = ReplyKeyboardBuilder()
     for date_item in t:
